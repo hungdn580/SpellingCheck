@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SpellCheck4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Kiểm tra chính tả (Thầy Cường)/SpellCheck/dist/SpellCheck.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
