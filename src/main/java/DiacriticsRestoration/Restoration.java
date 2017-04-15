@@ -28,8 +28,8 @@ public class Restoration {
     private HashSet<String> phrase = new HashSet<String>();
     double oo = -9999999.0;
     
-    public Restoration(){
-        LoadData ld = new LoadData();
+    public Restoration(String file){
+        LoadData ld = new LoadData(file);
         System.out.println("loading unigram ...");
         this.tag1gram = ld.loadUnigram();
         System.out.println("loading bigram ...");
@@ -46,7 +46,7 @@ public class Restoration {
         System.out.println("loading abbreviation ...");
         this.abbreviation = ld.loadAbbreviation();
         System.out.println("loding words dictionary ...");
-        this.dictionary = ld.loadDict("src/model/vietnamese_dictionary.txt");
+        this.dictionary = ld.loadDict(file + "vietnamese_dictionary.txt");
     }
     
     public double transition(String tag, String tagMinus1, String tagMinus2){
@@ -264,7 +264,7 @@ public class Restoration {
         Tokenize tk = new Tokenize();
         str = tk.Tokenizing(str);
         ArrayList<String> taggedList = this.viterbiAlgorithm(str);
-        ArrayList<String> reverseList = new ArrayList<String>();
+        ArrayList<String> reverseList = new ArrayList<>();
         // reoder the tagged list
         for(int i=taggedList.size()-1; i>=0; i--){
             int pos = taggedList.get(i).indexOf("\\");

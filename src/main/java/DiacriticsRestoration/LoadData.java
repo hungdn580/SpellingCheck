@@ -24,11 +24,16 @@ public class LoadData {
     public static int VOCAB_SIZE_ORIEMISSION = 13325;
     public static int SAMPLE_SIZE_EXEMISSION = 968967;
     public static int VOCAB_SIZE_EXEMISSION = 247441;
+    private static String mFileUrl;
+
+    public LoadData(String file) {
+        mFileUrl = file;
+    }
     
     public HashMap<String, Integer> loadUnigram(){
         HashMap<String, Integer> unigram = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/tag1gram.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "tag1gram.txt"));
             String s = "";
             while((s=br.readLine())!= null){
                 String[] tokens = s.split(" ");
@@ -49,7 +54,7 @@ public class LoadData {
     public HashMap<String, Integer> loadBigram(){
         HashMap<String, Integer> bigram = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/tag2gram.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "tag2gram.txt"));
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -66,7 +71,7 @@ public class LoadData {
     public HashMap<String, Integer> loadTrigram(){
         HashMap<String, Integer> trigram = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/tag3gram.txt"));
+            BufferedReader br = new BufferedReader(new FileReader( mFileUrl + "tag3gram.txt"));
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -83,7 +88,7 @@ public class LoadData {
     public HashMap<String, Integer> loadOriginalEmission(){
         HashMap<String, Integer> oriEmission = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/originalEmission.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "originalEmission.txt"));
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -104,7 +109,7 @@ public class LoadData {
     public HashMap<String, Integer> loadExtensionEmission(){
         HashMap<String, Integer> exEmission = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/extensionEmission.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "extensionEmission.txt"));
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -125,7 +130,7 @@ public class LoadData {
     public HashMap<String, String> loadLexicon(){
         HashMap<String, String> lexicon = new HashMap<String, String>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/lexicon.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "lexicon.txt"));
             String s = "";
             while((s=br.readLine()) != null){
                 int pos = s.indexOf(" ");
@@ -141,7 +146,7 @@ public class LoadData {
     public HashMap<String, String> loadAbbreviation(){
         HashMap<String, String> abb = new HashMap<String, String>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/standard.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "standard.txt"));
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split("/");
@@ -157,7 +162,7 @@ public class LoadData {
     
     public HashMap<String, String> loadSyllable(){
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/model/SyllableLexicon.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "SyllableLexicon.txt"));
             String s = "";
             while((s = br.readLine()) != null){
                 int pos = s.indexOf(" ");

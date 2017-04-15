@@ -12,6 +12,7 @@ import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -130,7 +131,7 @@ public class DemoController {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/spelling", method = RequestMethod.POST)
+    @RequestMapping(value = "/spelling", method = RequestMethod.POST , produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public @ResponseBody
     ResponseEntity<Mistake> findParagrahpSpellingMistake(@RequestParam String content) throws ExceptionHanlder {
 //

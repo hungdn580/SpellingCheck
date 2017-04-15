@@ -34,7 +34,7 @@ public class SpellcheckUI extends javax.swing.JFrame {
         initComponents();
         groupButton();
         sp = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
-        res = new Restoration();
+        res = new Restoration("E:\\Hoc Tap\\NCKH\\ngramdict\\model\\");
         Font font = new Font("Verdana", Font.PLAIN, 20);
         this.jTextArea1.setFont(font);
         this.jTextArea2.setFont(font);

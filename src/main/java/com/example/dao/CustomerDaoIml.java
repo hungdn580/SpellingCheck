@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import DiacriticsRestoration.Restoration;
 import com.example.model.Customer;
 import com.example.model.Suggest;
 import org.springframework.stereotype.Repository;
@@ -21,7 +22,8 @@ import java.util.logging.Logger;
 @Repository
 public class CustomerDaoIml implements CustomerDao {
 
-    private SpellChecker spellChecker;
+    private static SpellChecker spellChecker;
+    private static Restoration res;
 
     @PersistenceContext
     EntityManager entityManager;
@@ -145,6 +147,10 @@ public class CustomerDaoIml implements CustomerDao {
             if (spellChecker == null) {
                 spellChecker = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
             }
+
+            if (res == null) {
+                res = new Restoration("E:\\Hoc Tap\\NCKH\\ngramdict\\model\\");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -163,6 +169,7 @@ public class CustomerDaoIml implements CustomerDao {
 //                    if(this.jRadioButton2.isSelected()){
 //                        lines[i] = res.restoration(lines[i]);
 //                    }
+//                    lines[i] = res.restoration(lines[i]);
                     result = spellChecker.processParagraph(lines[i]);
                     long end = System.currentTimeMillis();
 //                    runningTime = (end - start)*1.0/1000;
