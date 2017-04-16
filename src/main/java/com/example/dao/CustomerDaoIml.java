@@ -10,6 +10,7 @@ import spellcheck.SpellcheckUI;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,6 +25,7 @@ public class CustomerDaoIml implements CustomerDao {
 
     private static SpellChecker spellChecker;
     private static Restoration res;
+    private static String BASE_FILE_URL = "\\model\\";
 
     @PersistenceContext
     EntityManager entityManager;
@@ -57,7 +59,7 @@ public class CustomerDaoIml implements CustomerDao {
     @Override
     public String positionMistake(String content) {
         try {
-            spellChecker = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
+            spellChecker = new SpellChecker(BASE_FILE_URL);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,7 +102,7 @@ public class CustomerDaoIml implements CustomerDao {
         //String inputText = this.jTextArea1.getText();
         try {
             if (spellChecker == null) {
-                spellChecker = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
+                spellChecker = new SpellChecker(BASE_FILE_URL);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,11 +147,11 @@ public class CustomerDaoIml implements CustomerDao {
         ArrayList<Suggest> result = new ArrayList<>();
         try {
             if (spellChecker == null) {
-                spellChecker = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
+                spellChecker = new SpellChecker(BASE_FILE_URL);
             }
 
             if (res == null) {
-                res = new Restoration("E:\\Hoc Tap\\NCKH\\ngramdict\\model\\");
+                res = new Restoration(BASE_FILE_URL);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -193,7 +195,7 @@ public class CustomerDaoIml implements CustomerDao {
 
         try {
             if (spellChecker == null) {
-                spellChecker = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
+                spellChecker = new SpellChecker(BASE_FILE_URL);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -240,7 +242,7 @@ public class CustomerDaoIml implements CustomerDao {
 
         try {
             if (spellChecker == null) {
-                spellChecker = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
+                spellChecker = new SpellChecker(BASE_FILE_URL);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -6,11 +6,12 @@
 
 package DiacriticsRestoration;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import spellcheck.SpellChecker;
+
+import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Scanner;
 
 /**
  *
@@ -33,7 +34,8 @@ public class LoadData {
     public HashMap<String, Integer> loadUnigram(){
         HashMap<String, Integer> unigram = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "tag1gram.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/tag1gram.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String s = "";
             while((s=br.readLine())!= null){
                 String[] tokens = s.split(" ");
@@ -54,7 +56,9 @@ public class LoadData {
     public HashMap<String, Integer> loadBigram(){
         HashMap<String, Integer> bigram = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "tag2gram.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/tag2gram.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -71,7 +75,9 @@ public class LoadData {
     public HashMap<String, Integer> loadTrigram(){
         HashMap<String, Integer> trigram = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader( mFileUrl + "tag3gram.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/tag3gram.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -88,7 +94,9 @@ public class LoadData {
     public HashMap<String, Integer> loadOriginalEmission(){
         HashMap<String, Integer> oriEmission = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "originalEmission.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/originalEmission.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -109,7 +117,9 @@ public class LoadData {
     public HashMap<String, Integer> loadExtensionEmission(){
         HashMap<String, Integer> exEmission = new HashMap<String, Integer>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "extensionEmission.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/extensionEmission.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split(" ");
@@ -130,7 +140,9 @@ public class LoadData {
     public HashMap<String, String> loadLexicon(){
         HashMap<String, String> lexicon = new HashMap<String, String>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "lexicon.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/lexicon.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s=br.readLine()) != null){
                 int pos = s.indexOf(" ");
@@ -146,7 +158,9 @@ public class LoadData {
     public HashMap<String, String> loadAbbreviation(){
         HashMap<String, String> abb = new HashMap<String, String>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "standard.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/standard.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s=br.readLine()) != null){
                 String[] tokens = s.split("/");
@@ -162,7 +176,9 @@ public class LoadData {
     
     public HashMap<String, String> loadSyllable(){
         try{
-            BufferedReader br = new BufferedReader(new FileReader(mFileUrl + "SyllableLexicon.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/SyllableLexicon.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s = br.readLine()) != null){
                 int pos = s.indexOf(" ");
@@ -174,10 +190,12 @@ public class LoadData {
         return SYLLABLES;
     }
     
-    public HashSet<String> loadDict(String inputFile){
+    public HashSet<String> loadDict(){
         HashSet<String> dictionary = new HashSet<String>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(inputFile));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/vietnamese_dictionary.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
             String s = "";
             while((s = br.readLine()) != null){
                 dictionary.add(s);

@@ -30,11 +30,13 @@ public class SpellcheckUI extends javax.swing.JFrame {
     static Restoration res;
     private double runningTime = 0;
     private boolean True;
+    private static String BASE_FILE_URL = "src/main/java/model/";
+
     public SpellcheckUI() throws Exception {
         initComponents();
         groupButton();
-        sp = new SpellChecker("E:\\Hoc Tap\\NCKH\\ngramdict\\");
-        res = new Restoration("E:\\Hoc Tap\\NCKH\\ngramdict\\model\\");
+        sp = new SpellChecker(BASE_FILE_URL);
+        res = new Restoration(BASE_FILE_URL);
         Font font = new Font("Verdana", Font.PLAIN, 20);
         this.jTextArea1.setFont(font);
         this.jTextArea2.setFont(font);

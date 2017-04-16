@@ -504,7 +504,8 @@ public class SpellChecker {
         count = 0;
         s = null;
         try {
-            s = new Scanner(new BufferedReader(new FileReader(namefile+"Englishdict.txt")));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/Englishdict.txt");
+            s = new Scanner(new BufferedReader(new InputStreamReader(in)));
 
             while (s.hasNext()) {
                 commonEnglishWord[count] = s.next().toString();
@@ -520,7 +521,9 @@ public class SpellChecker {
         }
 
         try {
-            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"syllables.txt")));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/syllables.txt");
+            s = new Scanner(new BufferedReader(new InputStreamReader(in)));
+//            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"syllables.txt")));
 
             syllable_size = s.nextInt();
             syllables = new String[syllable_size];
@@ -544,7 +547,9 @@ public class SpellChecker {
         s = null;
         unigramDictionary = new Unigram[unigramDictionarySize + 1];
         try {
-            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"unigram_int.txt")));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/unigram_int.txt");
+            s = new Scanner(new BufferedReader(new InputStreamReader(in)));
+//            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"unigram_int.txt")));
 
             String tmp;
             tmp = s.next();
@@ -572,7 +577,9 @@ public class SpellChecker {
         int count = 0;
         bigramDictionary = new Bigram[bigramDictionarySize];
         try {
-            r = new BufferedReader(new FileReader(this.namefile+"bigram_int.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/bigram_int.txt");
+            r = new BufferedReader(new InputStreamReader(in));
+//            r = new BufferedReader(new FileReader(this.namefile+"bigram_int.txt"));
             String tmp;
             tmp = r.readLine();
             while ((tmp = r.readLine()) != null) {
@@ -599,7 +606,10 @@ public class SpellChecker {
         int count = 0;
         bigramDictionary = new Bigram[bigramDictionarySize];
         try {
-            r = new BufferedReader(new FileReader(this.namefile+"bigram_int.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/bigram_int.txt");
+            r = new BufferedReader(new InputStreamReader(in));
+
+//            r = new BufferedReader(new FileReader(this.namefile+"bigram_int.txt"));
             String tmp;
             tmp = r.readLine();
             File outFile = new File("E:/code_bigram.txt");
@@ -632,7 +642,10 @@ public class SpellChecker {
         trigramDictionary = new Trigram[trigramDictionarySize];
         count = 0;
         try {
-            r = new BufferedReader(new FileReader(this.namefile+"trigram_int.txt"));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/trigram_int.txt");
+            r = new BufferedReader(new InputStreamReader(in));
+
+//            r = new BufferedReader(new FileReader(this.namefile+"trigram_int.txt"));
             String tmp;
             tmp = r.readLine();
             while ((tmp = r.readLine()) != null) {
@@ -662,7 +675,10 @@ public class SpellChecker {
         s = null;
         count = 0;
         try {
-            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"unigram_extractsign.txt")));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/unigram_extractsign.txt");
+            s = new Scanner(new BufferedReader(new InputStreamReader(in)));
+
+//            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"unigram_extractsign.txt")));
             String tmp;
             tmp = s.next();
 
@@ -693,7 +709,10 @@ public class SpellChecker {
         s = null;
         count = 0;
         try {
-            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"vietdict.txt")));
+            InputStream in = SpellChecker.class.getResourceAsStream("/model/vietdict.txt");
+            s = new Scanner(new BufferedReader(new InputStreamReader(in)));
+
+//            s = new Scanner(new BufferedReader(new FileReader(this.namefile+"vietdict.txt")));
             int tmp;
             tmp = s.nextInt();
             System.out.println("vietdictSize read from file: " + tmp);

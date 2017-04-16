@@ -46,7 +46,7 @@ public class Restoration {
         System.out.println("loading abbreviation ...");
         this.abbreviation = ld.loadAbbreviation();
         System.out.println("loding words dictionary ...");
-        this.dictionary = ld.loadDict(file + "vietnamese_dictionary.txt");
+        this.dictionary = ld.loadDict();
     }
     
     public double transition(String tag, String tagMinus1, String tagMinus2){

@@ -69,25 +69,6 @@ public class DemoController {
         return result;
     }
 
-    @CrossOrigin
-    @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public String postHandler(@RequestParam String url) {
-        String text = "";
-
-        try {
-            //TODO return proper representation object
-
-            Document doc = Jsoup.connect(url).get();
-            text = doc.body().text();
-
-        } catch (IOException ex) {
-
-        }
-        return customerDao.findMistakePosition(text);
-    }
-
-
-
     @RequestMapping("/findbyid")
     public String findById(@RequestParam("id") long id) {
         String result = "";
@@ -105,7 +86,24 @@ public class DemoController {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/mistake", method = RequestMethod.POST)
+    @RequestMapping(value = "/check", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public String postHandler(@RequestParam String url) {
+        String text = "";
+
+        try {
+            //TODO return proper representation object
+
+            Document doc = Jsoup.connect(url).get();
+            text = doc.body().text();
+
+        } catch (IOException ex) {
+
+        }
+        return customerDao.findMistakePosition(text);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/mistake", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ArrayList<String> findSpellingMistake(@RequestParam String content) {
 //        System.out.println(content);
 
@@ -125,7 +123,7 @@ public class DemoController {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/typing", method = RequestMethod.POST)
+    @RequestMapping(value = "/typing", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ArrayList<String> findTypingSpellingMistake(@RequestParam String content) {
         return customerDao.typingCheck(content);
     }
@@ -181,7 +179,7 @@ public class DemoController {
         return new ResponseEntity<>(error, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/position", method = RequestMethod.POST)
+    @RequestMapping(value = "/position", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public String findPositionMistake(@RequestParam String content) {
         return customerDao.positionMistake(content);
     }
